@@ -1,0 +1,221 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Inter', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url(/img/bglogin.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+
+}
+
+.container-signup-form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: 100ms;
+    justify-content: end;
+    z-index: -1;
+}
+
+.signUp_Form {
+    background-color: rgba(11, 7, 5, 1);
+    height: 100%;
+    width: 50%;
+    right: 0;
+    border-bottom-left-radius: 50px;
+    border-top-left-radius: 50px;
+    
+
+}
+
+
+.signUp_Form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.signUp_Form div h1 {
+    color: white;
+    border-bottom: solid white 3px;
+    width: 200px;
+}
+
+.signUp_Form div input {
+    margin-top: 20px;
+    width: 60%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    font-family: 'Aoboshi One', sans-serif;
+}
+
+.signUp_Form div button {
+    height: 40px;
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color: rgba(11, 7, 5, 1);
+    color: white;
+    border-color: white;
+    font-weight: bold;
+    transition: 300ms;
+    font-weight: bold;
+}
+.signUp_Form div button a{
+   display: flex;
+   height: 100%;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   text-decoration: none;
+   border-radius: 7px;
+}
+
+.signUp_Form div a:hover {
+    color: black;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+
+}
+
+.login-switch {
+    color: white;
+    z-index: 20;
+    display: flex;
+    width: 50%;
+    position: absolute;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-switch button {
+    background-color: white;
+    color: black;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    transition: 200ms;
+    filter: brightness(100%);
+}
+
+.login-switch button:hover {
+
+    cursor: pointer;
+    filter: brightness(70%);
+}
+
+
+  .container-login-all{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+  }  
+
+
+.login_Form{
+    background-color: rgba(11, 7, 5, 1);
+    color: white;
+    width: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+}
+.login_Form div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login_Form div input{
+    margin-top: 20px;
+    width: 60%;
+    height: 40px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    font-family: 'Aoboshi One', sans-serif;
+}
+
+
+.login_Form div button{
+    height: 40px;
+    width: 200px;
+    margin-top: 50px;
+    border-radius: 10px;
+    background-color: rgba(11, 7, 5, 1);
+    color: white;
+    border-color: white;
+    font-weight: bold;
+    transition: 300ms;
+    font-weight: bold;
+}
+.login_Form h1{
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 50px;
+    border-bottom: 3px white solid;
+    width: 200px;
+    
+}
+
+.login_Form div button:hover{
+    cursor: pointer;
+    color: black;
+    background-color: white;
+}
+.SignUp-switch{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    gap: 10px;
+    right: 0;
+}
+
+.SignUp-switch button{
+    background-color: white;
+    color: black;
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    border: none;
+    font-weight: bold;
+    transition: 200ms;
+    filter: brightness(100%);
+}
+
+.SignUp-switch button:hover{
+    filter: brightness(70%);
+    cursor: pointer;
+}

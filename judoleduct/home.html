@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arva News - Informasi Terkini, Terpercaya, Terdepan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-login:hover {
+            background: white;
+            color: #2a5298;
+        }
+
+        .btn-register {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23e8f4f8" width="1200" height="600"/><g fill="%234ECDC4" opacity="0.1"><circle cx="100" cy="100" r="50"/><circle cx="300" cy="200" r="30"/><circle cx="500" cy="150" r="40"/><circle cx="700" cy="300" r="35"/><circle cx="900" cy="200" r="45"/><circle cx="1100" cy="400" r="25"/></g></svg>');
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ECDC4;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Breaking News Ticker */
+        .breaking-news {
+            background: #FF6B6B;
+            color: white;
+            padding: 10px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .breaking-container {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .breaking-label {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .breaking-text {
+            animation: scroll-left 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Featured News */
+        .featured-section h2 {
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-left: 4px solid #4ECDC4;
+            padding-left: 15px;
+        }
+
+        .featured-news {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .featured-main {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .featured-main:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #4ECDC4, #44A08D);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .featured-content {
+            padding: 2rem;
+        }
+
+        .category-tag {
+            background: #4ECDC4;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .featured-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .featured-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .news-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .news-card-content {
+            padding: 1.5rem;
+        }
+
+        .news-card-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-card-excerpt {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-section h3 {
+            color: #1e3c72;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4ECDC4;
+            padding-left: 15px;
+        }
+
+        .trending-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .trending-item:last-child {
+            border-bottom: none;
+        }
+
+        .trending-number {
+            background: #4ECDC4;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .trending-content h4 {
+            color: #1e3c72;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .trending-meta {
+            color: #888;
+            font-size: 0.8rem;
+        }
+
+        .newsletter {
+            text-align: center;
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 25px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .newsletter input:focus {
+            outline: none;
+            border-color: #4ECDC4;
+        }
+
+        .newsletter button {
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #4ECDC4;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #4ECDC4;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2a5298;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">ARVA NEWS</a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#dampak-sosial">Dampak Sosial</a></li>
+                    <li><a href="#kisah-korban">Kisah Korban</a></li>
+                    <li><a href="#pemulihan">Pemulihan</a></li>
+                    <li><a href="#edukasi">Edukasi</a></li>
+                    <li><a href="#bantuan">Bantuan</a></li>
+                </ul>
+            </nav>
+            
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-login" onclick="showLogin()">Masuk</a>
+                <a href="#" class="btn btn-register" onclick="showRegister()">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>⚠️ ARVA NEWS</h1>
+            <p>Kampanye Anti Judi Online - Lindungi Keluarga Indonesia</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number" id="readerCount">15K+</div>
+                    <div class="stat-label">Keluarga Terselamatkan</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="articleCount">500+</div>
+                    <div class="stat-label">Kisah Pemulihan</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Konseling Gratis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breaking News Ticker -->
+    <div class="breaking-news">
+        <div class="breaking-container">
+            <div class="breaking-label">🚨 PERINGATAN</div>
+            <div class="breaking-text">
+                Polri bongkar sindikat judi online dengan kerugian Rp 2 triliun • 3 remaja bunuh diri karena terlilit hutang judi online • Pemerintah blokir 1.200 situs judi ilegal • Kampanye #StopJudol trending di media sosial • Hotline konseling: 0800-1234-5678
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Featured Section -->
+        <main class="featured-section">
+            <h2>🛡️ Berita Utama Anti Judi Online</h2>
+            
+            <!-- Featured Main Article -->
+            <article class="featured-main loading">
+                <div class="featured-image">💔</div>
+                <div class="featured-content">
+                    <span class="category-tag">DAMPAK SOSIAL</span>
+                    <h3 class="featured-title">"Suami Saya Habiskan Rumah untuk Judi Online" - Kesaksian Istri Korban Judol</h3>
+                    <p class="featured-excerpt">
+                        Sari (35) berbagi kisah pilu bagaimana suaminya yang kecanduan judi online menghabiskan seluruh tabungan keluarga hingga rumah harus dijual. "Dalam 6 bulan, Rp 800 juta lenyap. Anak-anak sampai tidak bisa sekolah," ungkap ibu 2 anak ini sambil menangis.
+                    </p>
+                    <div class="article-meta">
+                        <span>👤 Tim Investigasi</span>
+                        <span>📅 21 Agu 2025</span>
+                        <span>👁️ 15,234 views</span>
+                        <span style="color: #FF6B6B;">💬 234 cerita serupa</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- News Grid -->
+            <div class="news-grid">
+                <article class="news-card loading">
+                    <div class="news-card-image">🚨</div>
+                    <div class="news-card-content">
+                        <span class="category-tag">KRIMINAL</span>
+                        <h4 class="news-card-title">Polri Bongkar Jaringan Judi Online Berkedok Investasi</h4>
+                        <p class="news-card-excerpt">Tersangka menipu korban dengan modus investasi crypto, padahal uang dialihkan ke situs judi...</p>
+                        <div class="article-meta">
+                            <span>📅 21 Agu 2025</span>
+                            <span>👁️ 8,924 views</span>
+                            <span style="color: #FF6B6B;">⚠️ Kasus serupa: 45</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading">
+                    <div class="news-card-image">💰</div>
+                    <div class="news-card-content">
+                        <span class="category-tag">EKONOMI</span>
+                        <h4 class="news-card-title">Kerugian Ekonomi Judi Online Capai Rp 327 Triliun</h4>
+                        <p class="news-card-excerpt">Data Bank Indonesia menunjukkan uang rakyat yang mengalir ke judi online mencapai angka fantastis...</p>
+                        <div class="article-meta">
+                            <span>📅 21 Agu 2025</span>
+                            <span>👁️ 12,156 views</span>
+                            <span style="color: #FF6B6B;">📈 Naik 400% vs 2023</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading">
+                    <div class="news-card-image">💔</div>
+                    <div class="news-card-content">
+                        <span class="category-tag">KESEHATAN MENTAL</span>
+                        <h4 class="news-card-title">Remaja 17 Tahun Bunuh Diri Karena Hutang Judi Online</h4>
+                        <p class="news-card-excerpt">Ditemukan surat wasiat yang menyebutkan tekanan debt collector dan malu pada keluarga...</p>
+                        <div class="article-meta">
+                            <span>📅 20 Agu 2025</span>
+                            <span>👁️ 25,341 views</span>
+                            <span style="color: #FF6B6B;">💔 Kasus ke-12 bulan ini</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card loading">
+                    <div class="news-card-image">🛡️</div>
+                    <div class="news-card-content">
+                        <span class="category-tag">PEMULIHAN</span>
+                        <h4 class="news-card-title">Kisah Sukses: "Saya Lepas dari Jerat Judi Online"</h4>
+                        <p class="news-card-excerpt">Andi berbagi tips dan perjalanan 1 tahun rehabilitasi dari kecanduan judi online...</p>
+                        <div class="article-meta">
+                            <span>📅 20 Agu 2025</span>
+                            <span>👁️ 18,743 views</span>
+                            <span style="color: #4ECDC4;">✅ Story of Hope</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-section loading">
+                <h3>🆘 Butuh Bantuan Segera?</h3>
+                
+                <div class="trending-item">
+                    <div class="trending-number">📞</div>
+                    <div class="trending-content">
+                        <h4>Hotline Anti Judi Online</h4>
+                        <div class="trending-meta" style="color: #4ECDC4; font-weight: bold;">0800-1234-5678 (24 jam)</div>
+                    </div>
+                </div>
+                
+                <div class="trending-item">
+                    <div class="trending-number">💬</div>
+                    <div class="trending-content">
+                        <h4>Konseling Online Gratis</h4>
+                        <div class="trending-meta">Chat WhatsApp: 0812-3456-7890</div>
+                    </div>
+                </div>
+                
+                <div class="trending-item">
+                    <div class="trending-number">🏥</div>
+                    <div class="trending-content">
+                        <h4>Support Group Terdekat</h4>
+                        <div class="trending-meta">Temukan komunitas pemulihan di kota Anda</div>
+                    </div>
+                </div>
+                
+                <div class="trending-item">
+                    <div class="trending-number">⚡</div>
+                    <div class="trending-content">
+                        <h4>Blokir Situs Judi</h4>
+                        <div class="trending-meta">Tool otomatis blokir 10,000+ situs</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="sidebar-section newsletter loading">
+                <h3>🛡️ Alert Situs Baru</h3>
+                <p>Dapatkan peringatan situs judi baru dan tips perlindungan!</p>
+                <form id="newsletterForm">
+                    <input type="email" placeholder="Email untuk alert keamanan" required>
+                    <button type="submit">Daftar Alert</button>
+                </form>
+            </div>
+
+            <!-- Emergency Contact -->
+            <div class="sidebar-section loading">
+                <h3>🚨 Kontak Darurat</h3>
+                <div style="text-align: center; background: #FF6B6B; color: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+                    <div style="font-size: 1.2rem; font-weight: bold;">DARURAT BUNUH DIRI</div>
+                    <div style="font-size: 1.5rem; margin: 10px 0;">📞 119</div>
+                    <div style="font-size: 0.9rem;">Atau WA: 0811-1119-5879</div>
+                </div>
+                <div style="font-size: 0.85rem; color: #666; text-align: center;">
+                    <strong>Ingat:</strong> Tidak ada hutang yang lebih berharga dari nyawa Anda. Ada bantuan, ada harapan.
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>ARVA NEWS</h4>
+                <p>Platform edukasi dan kampanye anti judi online untuk melindungi keluarga Indonesia dari bahaya judol.</p>
+                <div style="margin-top: 1rem;">
+                    <span>📧 help@arvanews.com</span><br>
+                    <span>📞 Hotline: 0800-1234-5678</span><br>
+                    <span style="color: #FF6B6B;">🆘 Darurat: 119</span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Kategori Konten</h4>
+                <a href="#">Dampak Sosial</a>
+                <a href="#">Kisah Korban</a>
+                <a href="#">Proses Pemulihan</a>
+                <a href="#">Edukasi & Prevention</a>
+                <a href="#">Bantuan Hukum</a>
+                <a href="#">Konseling Gratis</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Bantuan & Support</h4>
+                <a href="#">Cara Blokir Situs</a>
+                <a href="#">Support Group</a>
+                <a href="#">Konseling Online</a>
+                <a href="#">Rehabilitasi</a>
+                <a href="#">Bantuan Finansial</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Tentang Kampanye</h4>
+                <a href="#">Tim Relawan</a>
+                <a href="#">Cara Membantu</a>
+                <a href="#">Lapor Situs Ilegal</a>
+                <a href="#">Partnership</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Arva News - Kampanye Anti Judi Online. Bersama melindungi keluarga Indonesia.</p>
+            <p style="margin-top: 5px; font-size: 0.9rem;">🤝 Didukung oleh: Kominfo, Polri, Kemensos, dan komunitas peduli</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all loading elements
+        document.querySelectorAll('.loading').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Newsletter form
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+            if (email) {
+                alert('✅ Terima kasih! Anda akan mendapat alert jika ada situs judi baru yang perlu diwaspadai.');
+                this.reset();
+            }
+        });
+
+        // Auth functions
+        function showLogin() {
+            alert('Mengalihkan ke halaman login...');
+        }
+
+        function showRegister() {
+            alert('Mengalihkan ke halaman registrasi...');
+        }
+
+        // Update stats dynamically
+        function updateStats() {
+            const readerCount = document.getElementById('readerCount');
+            const articleCount = document.getElementById('articleCount');
+            
+            // Simulate real-time updates
+            setInterval(() => {
+                const currentReaders = parseInt(readerCount.textContent.replace('K+', ''));
+                if (Math.random() > 0.7) {
+                    readerCount.textContent = (currentReaders + Math.floor(Math.random() * 3)) + 'K+';
+                }
+            }, 30000);
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            updateStats();
+            
+            // Add smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+
+        // Breaking news ticker pause on hover
+        const breakingText = document.querySelector('.breaking-text');
+        breakingText.addEventListener('mouseenter', () => {
+            breakingText.style.animationPlayState = 'paused';
+        });
+        breakingText.addEventListener('mouseleave', () => {
+            breakingText.style.animationPlayState = 'running';
+        });
+    </script>
+</body>
+</html>

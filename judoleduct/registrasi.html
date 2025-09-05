@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrasi - Arva News</title>
+    <link rel="stylesheet" href="registrasi.css">
+</head>
+<body>
+    <div class="container">
+        <div class="news-icon">📰</div>
+        
+        <div class="header">
+            <h1 class="logo">ARVA NEWS</h1>
+            <p class="subtitle">Bergabung dengan Komunitas Berita</p>
+            <p class="tagline">Informasi Terkini, Terpercaya, Terdepan</p>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            ✅ Registrasi berhasil! Selamat datang di Arva News!
+        </div>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="fullName">Nama Lengkap</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Masukkan nama lengkap Anda" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="contoh@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" name="phone" placeholder="08xxxxxxxxxx" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Minimal 8 karakter" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Konfirmasi Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Ulangi password Anda" required>
+            </div>
+
+            <div class="form-group">
+                <label for="interest">Kategori Berita Favorit</label>
+                <select id="interest" name="interest" required>
+                    <option value="">Pilih kategori berita</option>
+                    <option value="politik">Politik</option>
+                    <option value="ekonomi">Ekonomi & Bisnis</option>
+                    <option value="teknologi">Teknologi</option>
+                    <option value="olahraga">Olahraga</option>
+                    <option value="hiburan">Hiburan</option>
+                    <option value="kesehatan">Kesehatan</option>
+                    <option value="internasional">Internasional</option>
+                    <option value="daerah">Berita Daerah</option>
+                </select>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                <label for="newsletter">Saya ingin menerima newsletter harian Arva News</label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Saya setuju dengan <a href="#" style="color: #4ECDC4;">Syarat & Ketentuan</a> dan <a href="#" style="color: #4ECDC4;">Kebijakan Privasi</a></label>
+            </div>
+
+            <button type="submit" class="register-btn">
+                📰 DAFTAR SEKARANG
+            </button>
+        </form>
+
+        <div class="login-link">
+            Sudah punya akun? <a href="login.html">Masuk di sini</a>
+        </div>
+    </div>
+</body>
+</html>
+    <script src="registrasi.js"script>
