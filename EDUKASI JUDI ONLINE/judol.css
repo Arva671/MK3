@@ -1,0 +1,269 @@
+    title {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #4a4a4a;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #e8e8e8;
+      border-radius: 0;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .header {
+      background: #4a4a4a;
+      padding: 8px 20px;
+      text-align: right;
+    }
+
+    .header-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
+
+    .header-links a {
+      color: #b8b8b8;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .header-links a:hover {
+      color: #ffffff;
+    }
+
+    .content {
+      padding: 30px;
+      background: #e8e8e8;
+      position: relative;
+    }
+
+    .main-title {
+      font-size: 36px;
+      font-weight: normal;
+      color: #888888;
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .intro-text {
+      font-size: 14px;
+      color: #333333;
+      margin-bottom: 25px;
+      line-height: 1.4;
+      
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #333333;
+      margin: 25px 0 15px 0;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: #333333;
+      line-height: 1.4;
+      margin-bottom: 10px;
+    }
+
+    .content-list {
+      list-style: none;
+      margin: 10px 0 20px 0;
+      padding-left: 0;
+    }
+
+    .content-list li {
+      font-size: 14px;
+      color: #333333;
+      margin: 5px 0;
+      padding-left: 15px;
+      position: relative;
+    }
+
+    .content-list li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #333333;
+    }
+
+    .emoji-list {
+      list-style: none;
+      margin: 15px 0;
+      padding-left: 0;
+    }
+
+    .emoji-list li {
+      font-size: 14px;
+      color: #333333;
+      margin: 8px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .emoji {
+      flex-shrink: 0;
+      font-size: 16px;
+    }
+
+    .brain-image {
+      position: absolute;
+      top: 50px;
+      right: 50px;
+      width: 250px;
+      height: 250px;
+      border-radius: 15px;
+      object-fit: cover;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .left-content {
+      max-width: 580px;
+    }
+
+    .quote-section {
+      font-size: 14px;
+      color: #333333;
+      font-style: italic;
+      margin: 20px 0;
+      line-height: 1.4;
+    }
+
+    .quote-author {
+      font-style: normal;
+      font-weight: normal;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .content {
+        padding: 20px;
+      }
+      
+      .brain-image {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        display: block;
+      }
+      
+      .left-content {
+        max-width: 100%;
+      }
+      
+      .main-title {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 24px;
+      }
+      
+      .brain-image {
+        width: 100%;
+        max-width: 280px;
+        height: 180px;
+      }
+      
+      .header-links {
+        gap: 15px;
+      }
+      
+      .header-links a {
+        font-size: 12px;
+      }
+    }
+    /* ====== SIMULASI GAME ====== */
+.simulasi {
+  background: #ffffff;
+  border: 2px solid #4a4a4a;
+  border-radius: 12px;
+  padding: 25px;
+  margin: 40px 0;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+
+.simulasi h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+#saldo {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+#hasil {
+  margin-top: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+
+/* ====== BUTTON STYLING ====== */
+.simulasi button {
+  border: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Tombol "Coba Main" */
+#mainBtn {
+  background: linear-gradient(135deg, #ff4d4d, #cc0000);
+  color: #fff;
+}
+#mainBtn:hover {
+  background: linear-gradient(135deg, #e60000, #990000);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+#mainBtn:disabled {
+  background: #999;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Tombol "Butuh Bantuan" */
+.simulasi button:nth-of-type(2) {
+  background: linear-gradient(135deg, #00b300, #006600);
+  color: #fff;
+}
+.simulasi button:nth-of-type(2):hover {
+  background: linear-gradient(135deg, #009900, #004d00);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
